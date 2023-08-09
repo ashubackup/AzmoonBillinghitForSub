@@ -25,7 +25,7 @@ public class BillingEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String amount;
-	private long ani;
+	private String ani;
 	private String type;
 	private LocalDateTime dateTime;
 	private String status;
@@ -45,5 +45,6 @@ public class BillingEntity {
 	private String language;
 	private String billingStatus;
 	private String billingType;
+	private String txnId;
 
 }

@@ -32,12 +32,12 @@ public class SubscriptionService {
 				
 					
 //				System.out.println("Control inside");
-				long ani = Long.parseLong(getRecord.getAni());
+				String ani = getRecord.getAni();
 				List<BillingEntity> checkAni = repo.findByAni(ani);
 				
 				if(checkAni.size()==0) {
 				BillingEntity entity = new BillingEntity();
-				entity.setAni(Long.parseLong(getRecord.getAni()));
+				entity.setAni(getRecord.getAni());
 				entity.setBillingDate(LocalDate.now());
 				entity.setAmount(getRecord.getAmount());
 				entity.setPackType(getRecord.getPack());
@@ -52,8 +52,7 @@ public class SubscriptionService {
 				
 				}
 				
-//				List<BillingEntity> billing = repo.findByStatusAndType(entity.getStatus(),entity.getType());
-//				service.hitBilling(billing);
+//				
 			}
 		}catch (Exception e) {
 			// TODO: handle exception

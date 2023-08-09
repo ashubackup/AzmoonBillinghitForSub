@@ -40,6 +40,6 @@ public class TblBillingSuccess {
 	private String request;
 	private String response;
 	private String language;
-
+	private String txnId;
 
 }

@@ -21,7 +21,7 @@ public interface TblBillingRepo extends JpaRepository<BillingEntity, Integer> {
 //	public List
 //	
 	public List<BillingEntity> findByStatus(String status);
-	public List<BillingEntity> findByAni(long ani);
+	public List<BillingEntity> findByAni(String ani);
 	
 	public List<BillingEntity> findByType(String type);
 	

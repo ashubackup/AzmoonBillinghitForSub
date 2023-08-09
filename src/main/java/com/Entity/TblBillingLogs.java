@@ -23,7 +23,7 @@ public class TblBillingLogs {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String amount;
-	private long ani;
+	private String ani;
 	private String type;
 	private LocalDateTime dateTime;
 	private String status;
@@ -42,6 +42,7 @@ public class TblBillingLogs {
 	private String mAct;
 	private String language;
 	private String failedStatus;
+	private String txnId;
 
 
 }

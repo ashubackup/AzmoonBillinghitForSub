@@ -46,4 +46,5 @@ public class TblSubscription {
 	private LocalDateTime lastBilledDateTime;
 	private String pickStatus;
 	private String billingType;
+	private String txnId;
 }

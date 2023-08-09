@@ -17,5 +17,5 @@ public interface TblBillingLogsRepo extends JpaRepository<TblBillingLogs, Intege
 	
 	List<TblBillingLogs> findByStatusAndFailedStatus(String status,String failedstatus);
 	
-	List<TblBillingLogs> findByAni(Long ani);
+	List<TblBillingLogs> findByAni(String ani);
 }

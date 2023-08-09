@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="tbl_Unsubscription")
+@Table(name="tbl_unsubscription")
 public class TblUnsubscription 
 
 {
@@ -35,4 +35,5 @@ public class TblUnsubscription
 	private String mDeact;
 	private LocalDateTime subDateTime;
 	private LocalDateTime unsubDateTime;
+	private String txnId;
 }
