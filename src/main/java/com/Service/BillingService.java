@@ -164,9 +164,9 @@ public class BillingService {
 
 //				if(billing_Model.equals("1")) {
 					String ani = entity.getAni();
-					int count = repo.getCount(ani);
-					if(count==0)
-					{
+//					int count = repo.getCount(ani);
+//					if(count==0)
+//					{
 					System.out.println("The vallue of ani is" + ani);
 					String price = String.valueOf(entity.getAmount());
 					System.out.println("The value of price is" + price);
@@ -214,6 +214,10 @@ public class BillingService {
 							entity.setTxnId(entity.getTxnId());
 							billingRepo.save(entity);
 							System.out.println("The Response for SuccessFull" + body);
+							System.out.println("#########thread is Stop For 3 MInutes#######");
+							Thread.sleep(5000);
+							System.out.println("#########thread is start After 3 MInutes#######");
+							
 
 							System.out.println("Billing is Successfull");
 
@@ -362,7 +366,7 @@ public class BillingService {
 										billingRepo.save(entity);
 
 										updateDataInSub(subscription, entity, lastBilledDate, nextBillingDate);
-//								service.sendSms(entity);
+										service.sendSms(entity);
 										saveRecordInTableLogs(entity, lastBilledDate, nextBillingDate,
 												request.toString(), body + " " + status);
 										saveInTableBillingSuccess(entity, request.toString(), body + " " + status);
@@ -399,6 +403,9 @@ public class BillingService {
 								System.out.println("Response for Failed" + body);
 								entity.setStatus("Failed");
 								billingRepo.save(entity);
+								System.out.println("#########thread is Stop For 3 MInutes#######");
+								Thread.sleep(3000);
+								System.out.println("#########thread is start After 3 MInutes#######");
 								saveRecordInTableLogs(entity, null, null, request.toString(), body + " " + status);
 
 							}
@@ -412,11 +419,12 @@ public class BillingService {
 						entity.setStatus("Failed");
 						System.out.println("Response for Failed" + e.getMessage());
 						billingRepo.save(entity);
+						
 						saveRecordInTableLogs(entity, null, null, xmlRequest, e.getMessage());
 					}
-					}else {
-						billingRepo.delete(entity);
-					}
+//					}else {
+//						billingRepo.delete(entity);
+//					}
 				} else {
 					TblUnsubscription tblUnsubscription = new TblUnsubscription();
 					tblUnsubscription.setAni(String.valueOf(entity.getAni()));
@@ -500,13 +508,15 @@ public class BillingService {
 			billingLogs.setLanguage(entity.getLanguage());
 			billingLogs.setMAct(entity.getMAct());
 
-			Thread.sleep(5000);
+			
 			if (entity.getBillingType().equalsIgnoreCase("one")) {
 				if(entity.getStatus().equalsIgnoreCase("Failed"))
 					{
 					billingLogs.setFailedStatus("one");
 					logsRepo.save(billingLogs);
-					
+					System.out.println("#########thread is Stop For 3 MInutes#######");
+					Thread.sleep(3000);
+					System.out.println("#########thread is start After 3 MInutes#######");
 					billingRepo.delete(entity);
 					}
 				else {
@@ -520,11 +530,15 @@ public class BillingService {
 						billingLogs.setFailedStatus("0");
 						billingLogs.setTxnId(entity.getTxnId());
 						logsRepo.save(billingLogs);
+						System.out.println("#########thread is Stop For 3 MInutes#######");
+						Thread.sleep(3000);
+						System.out.println("#########thread is start After 3 MInutes#######");
 					} else {
 						billingLogs.setFailedStatus(entity.getBillingStatus());
 						billingLogs.setTxnId(entity.getTxnId());
 						logsRepo.save(billingLogs);
 					}
+					
 					billingRepo.delete(entity);
 
 //					billingRepo.delete(entity);
